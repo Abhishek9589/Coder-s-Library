@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign UP / Sign IN</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0faff;
+        }
+
+        .wrapper {
+            position: relative;
+            max-width: 470px;
+            width: 100%;
+            border-radius: 12px;
+            padding: 20px 30px 60px;
+            background: #faf9f6;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form.login, .form.signup {
+            display: none;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        .form header {
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .form.signup header {
+            color: #fff;
+        }
+
+        .form.login header {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        form input {
+            height: 45px;
+            outline: none;
+            border: none;
+            padding: 0 15px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        form input[type="submit"] {
+            background: #353935;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .toggle {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 20px;
+            }
+
+            form input {
+                height: 50px;
+            }
+
+            .form header {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wrapper {
+                padding: 15px;
+            }
+
+            form input {
+                height: 45px;
+            }
+
+            .form header {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form signup active" id="signupForm">
+            <header style="color: #353935;">Signup</header>
+            <form method="POST" action="sign.php">
+                <input type="text" name="full_name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" name="signup" value="Signup">
+            </form>
+            <div class="toggle" onclick="toggleForm()">Already have an account? Login</div>
+        </div>
+
+        <div class="form login" id="loginForm">
+            <header>Login</header>
+            <form method="POST" action="sign.php">
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" name="login" value="Login">
+            </form>
+            <div class="toggle" onclick="toggleForm()">Don't have an account? Signup</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            document.getElementById("signupForm").classList.toggle("active");
+            document.getElementById("loginForm").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
